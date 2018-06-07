@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphStudy
 {
-    public class Graph<T>// : IEnumerable<T>
+    public class Graph<T> : IGraph<T>
     {
         private Dictionary<T, List<T>> _adjacencyList;
 
