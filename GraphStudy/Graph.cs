@@ -10,6 +10,9 @@ namespace GraphStudy
     {
         private Dictionary<T, List<T>> _adjacencyList;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public Graph()
         {
             _adjacencyList = new Dictionary<T, List<T>>();
@@ -21,6 +24,15 @@ namespace GraphStudy
             set { _adjacencyList = value; }
         }
 
+        /// <summary>
+        /// Adds a vertex to the graph (adjacency list). This vertex will be orphaned/disconnected from any other vertex.
+        /// Does not allow for duplicate vertices to be added.
+        /// </summary>
+        /// <returns>
+        /// True if the vertex was added. False oetherwise (vertex already existed in graph).
+        /// </returns>
+        /// <param name="vertex"></param>
+        /// <returns></returns>
         public bool AddVertex(T vertex)
         {
             if (_adjacencyList.ContainsKey(vertex))
@@ -33,6 +45,17 @@ namespace GraphStudy
             return true;
         }
 
+        /// <summary>
+        /// Adds a vertex to the graph (adjacency list) with an edge to 'other'.
+        /// Edge direction determined by <c>inOutUndirected</c>.
+        /// "IN"                    : edge from other to vertex,
+        /// "OUT"                   : edge from vertex to other,
+        /// &lt;default/other&gt;   : undirected edge.
+        /// </summary>
+        /// <param name="vertex"></param>
+        /// <param name="other"></param>
+        /// <param name="inOutUndirected"></param>
+        /// <returns></returns>
         public bool AddVertex(T vertex, T other, string inOutUndirected = "UNDIRECTED")
         {
             if (!AddVertex(vertex) && !AddVertex(other))
@@ -56,6 +79,14 @@ namespace GraphStudy
             return true;
         }
 
+        /// <summary>
+        /// Checks whether a vertex exists in the graph.
+        /// </summary>
+        /// <returns>
+        /// True if it exists. False otherwise.
+        /// </returns>
+        /// <param name="vertex"></param>
+        /// <returns></returns>
         public bool VertexExists(T vertex)
         {
             if (_adjacencyList.ContainsKey(vertex))
@@ -65,6 +96,12 @@ namespace GraphStudy
             return false;
         }
 
+        /// <summary>
+        /// Removes a vertex from the graph. First removes the vertex from the adjacency list,
+        /// then removes any reference to it from any other vertex's entry in the adjaceny list.
+        /// </summary>
+        /// <param name="vertex"></param>
+        /// <returns></returns>
         public bool RemoveVertex(T vertex)
         {
             if (!VertexExists(vertex))
@@ -82,6 +119,13 @@ namespace GraphStudy
             return true;
         }
 
+        /// <summary>
+        /// Adds an edge between source and target. If <c>isDirectedEdge</c> is true, only adds an edge from source to target.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="target"></param>
+        /// <param name="isDirectedEdge"></param>
+        /// <returns></returns>
         public bool AddEdge(T source, T target, bool isDirectedEdge = false)
         {
             if (EdgeExists(source, target, isDirectedEdge))
@@ -99,10 +143,16 @@ namespace GraphStudy
             return true;
         }
 
-        /* Returns:
-         * -1 if no edge exists
-         * 1 if directed edge removed
-         * 2 if undirected edge removed */
+         /// <summary>
+         /// Returns:
+         /// -1 : no edge exists,
+         /// 1  : directed edge removed,
+         /// 2  : undirected edge removed
+         /// </summary>
+         /// <param name="source"></param>
+         /// <param name="target"></param>
+         /// <param name="isDirectedEdge"></param>
+         /// <returns></returns>
         public int RemoveEdge(T source, T target, bool isDirectedEdge = false)
         {
             if (!EdgeExists(source, target, isDirectedEdge))
@@ -120,6 +170,17 @@ namespace GraphStudy
             return 1;
         }
 
+        /// <summary>
+        /// Whether an edge exists between source and target.
+        /// If <c>isDirectedEdge</c> is true, will only check for an edge from source to target.
+        /// </summary>
+        /// <returns>
+        /// True if an edge exists between source and target. False otherwise.
+        /// </returns> 
+        /// <param name="source"></param>
+        /// <param name="target"></param>
+        /// <param name="isDirectedEdge"></param>
+        /// <returns></returns>
         public bool EdgeExists(T source, T target, bool isDirectedEdge = false)
         {
             if (isDirectedEdge)
@@ -143,11 +204,22 @@ namespace GraphStudy
             return false;
         }
 
+        /// <summary>
+        /// Returns a List&lt;T&gt; of the vertices in the graph.
+        /// </summary>
+        /// <returns>
+        /// List&lt;T&gt; of keys from the adjacency list dictionary.
+        /// </returns>
+        /// <returns></returns>
         public List<T> Vertices()
         {//TODO maybe make a vertex object and construct as needed?
             return _adjacencyList.Keys.ToList();
         }
 
+        /// <summary>
+        /// Prints out vertex data and then the vertices ajdacent to it via undirected and directed outbound edgeds.
+        /// </summary>
+        /// <param name="vertex"></param>
         public void PrintVertex(T vertex)
         {
             string VertexOutput = vertex.ToString();// + "\n\t";
