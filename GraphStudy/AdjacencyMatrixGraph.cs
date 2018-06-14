@@ -8,13 +8,10 @@ namespace GraphStudy
 {
     class AdjacencyMatrixGraph<T> : IGraph<T>
     {
-<<<<<<< HEAD
         //private List<List<T>> _adjacencyMatrix;
         private List<T> _vertices;
         private List<List<T>> _adjacencyMatrix;
-=======
         private Dictionary<T, List<int>> _adjacencyMatrix;
->>>>>>> db7e504801d05bb1f8b44d3a1850a7dcd411c9fc
 
         public Dictionary<T, List<int>> AdjacencyMatrix
         {
@@ -39,10 +36,8 @@ namespace GraphStudy
 
         public AdjacencyMatrixGraph()
         {
-<<<<<<< HEAD
             _vertices = new List<T>();
             _adjacencyMatrix = new List<List<T>>();
-=======
             _adjacencyMatrix = new Dictionary<T, List<int>>();
         }
 
@@ -64,7 +59,6 @@ namespace GraphStudy
             _adjacencyMatrix[vertex] = Enumerable.Repeat(0, _adjacencyMatrix.Keys.Count).ToList();
             //TODO update edges
             return true;
->>>>>>> db7e504801d05bb1f8b44d3a1850a7dcd411c9fc
         }
 
         public bool AddVertex(T vertex)
