@@ -10,17 +10,17 @@ namespace GraphStudy
     {
         static void Main(string[] args)
         {
-            Graph<string> graph = new Graph<string>();
-            graph.AddVertex("vertex1");
-            graph.AddVertex("vertex2", "vertex1", "out");
-            graph.AddVertex("vertex3", "vertex2");
-            graph.AddEdge("vertex1", "vertex3");
-            graph.AddVertex("vertex1", "vertex0");
-            graph.PrintVertex("vertex1");
-            graph.PrintVertex("vertex2");
-            graph.PrintVertex("vertex3");
+            AdjacencyListGraph<string> adjacencyListGraph = new AdjacencyListGraph<string>();
+            adjacencyListGraph.AddVertex("vertex1");
+            adjacencyListGraph.AddVertex("vertex2", "vertex1", "out");
+            adjacencyListGraph.AddVertex("vertex3", "vertex2");
+            adjacencyListGraph.AddEdge("vertex1", "vertex3");
+            adjacencyListGraph.AddVertex("vertex1", "vertex0");
+            adjacencyListGraph.PrintVertex("vertex1");
+            adjacencyListGraph.PrintVertex("vertex2");
+            adjacencyListGraph.PrintVertex("vertex3");
 
-            graph.RemoveEdge("vertex1", "vertex0");
+            adjacencyListGraph.RemoveEdge("vertex1", "vertex0");
 
             Console.ReadLine();
         }

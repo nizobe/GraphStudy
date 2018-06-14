@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace GraphStudy
 {
-    public class Graph<T> : IGraph<T>
+    public class AdjacencyListGraph<T> : IGraph<T>
     {
         private Dictionary<T, List<T>> _adjacencyList;
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public Graph()
+        public AdjacencyListGraph()
         {
             _adjacencyList = new Dictionary<T, List<T>>();
         }
