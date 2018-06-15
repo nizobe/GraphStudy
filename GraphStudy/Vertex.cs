@@ -8,10 +8,32 @@ namespace GraphStudy
 {
     class Vertex<T>
     {
-        T _data;
+        private T _data;
 
         //<int -hash code, List<<int -direction, int -weight>>>
-        Dictionary<int, List<Tuple<int,int>>> _neighbors;//stores hash codes of neighbors instead of neighbors themselves
+        private Dictionary<int, List<Tuple<int,int>>> _neighbors;//stores hash codes of neighbors instead of neighbors themselves
+
+        //public Dictionary<int, List<Tuple<int, int>>> Neighbors
+        public List<int> Neighbors
+        {
+            get
+            {
+                return _neighbors.Keys.ToList();
+            }
+        }
+
+        public T Data
+        {
+            get
+            {
+                return _data;
+            }
+
+            set
+            {
+                _data = value;
+            }
+        }
 
         public bool HasNeighbor(int neighbor)
         {//TODO tell whether or not the neighbor is reachable from this vertex?
