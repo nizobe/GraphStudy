@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphStudy
 {
-    class Edge<T>
+    class Edge
     {
         public enum EdgeDirection
         {
@@ -14,12 +14,12 @@ namespace GraphStudy
             Bidirectional,
             Out
         };
-        private Vertex<T> _source;
-        private Vertex<T> _destination;
+        private int _source;//hash code
+        private int _destination;//hash code
         private int _weight;
         private EdgeDirection _direction;
 
-        internal Vertex<T> Destination
+        internal int Destination
         {
             get
             {
@@ -32,7 +32,7 @@ namespace GraphStudy
             }
         }
 
-        internal Vertex<T> Source
+        internal int Source
         {
             get
             {
@@ -73,13 +73,13 @@ namespace GraphStudy
 
         public Edge()
         {
-            _source = null;
-            _destination = null;
+            _source = -1;
+            _destination = -1;
             _weight = -1;
             _direction = EdgeDirection.Bidirectional;
         }
 
-        public Edge(Vertex<T> source, Vertex<T> destination, int weight = 0,
+        public Edge(int source, int destination, int weight = 0,
             EdgeDirection direction = EdgeDirection.Bidirectional)
         {
             _source = source;
