@@ -13,6 +13,18 @@ namespace GraphStudy
         //<int -hash code, List<<int -direction, int -weight>>>
         private Dictionary<int, List<Tuple<int,int>>> _neighbors;//stores hash codes of neighbors instead of neighbors themselves
 
+        public Vertex(T data)
+        {
+            _data = data;
+            _neighbors = new Dictionary<int, List<Tuple<int, int>>>();
+        }
+
+        public Vertex()
+        {
+            _data = default(T);
+            _neighbors = new Dictionary<int, List<Tuple<int, int>>>();
+        }
+
         //public Dictionary<int, List<Tuple<int, int>>> Neighbors
         public List<int> Neighbors
         {

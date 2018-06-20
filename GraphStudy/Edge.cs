@@ -19,7 +19,7 @@ namespace GraphStudy
         private int _weight;
         private EdgeDirection _direction;
 
-        internal int Destination
+        public int Destination
         {
             get
             {
@@ -32,7 +32,7 @@ namespace GraphStudy
             }
         }
 
-        internal int Source
+        public int Source
         {
             get
             {
